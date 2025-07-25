@@ -145,11 +145,12 @@ header h1 {
     line-height: 1;
 }
 .score-box { border: 2px solid var(--accent-color); }
-.score-wrapper { display: flex; align-items: center; gap: 20px; }
-.chart-wrapper { width: 60%; position: relative; }
-.percentage-wrapper { width: 40%; text-align: center; }
-.percentage-wrapper p { padding: 0; margin: 0 0 5px; }
-#recommend-percentage-value { font-size: 3em; font-weight: 700; color: var(--accent-color); line-height: 1; }
+.score-wrapper { display: flex; justify-content: center; align-items: center; }
+.chart-wrapper {
+    width: 100%; /* グラフエリアの横幅を100%に */
+    max-width: 400px; /* ただし、大きくなりすぎないように最大幅を指定 */
+    position: relative;
+}
 
 /* おすすめパビリオンリスト */
 #recommendation-list { display: flex; flex-direction: column; gap: 20px; }
@@ -182,7 +183,4 @@ header h1 {
 /* レスポンシブ対応 */
 @media (max-width: 600px) {
     #choices-area { grid-template-columns: 1fr; }
-    .score-wrapper { flex-direction: column; }
-    .chart-wrapper, .percentage-wrapper { width: 100%; }
-    .chart-wrapper { max-width: 280px; margin-bottom: 20px; }
 }
