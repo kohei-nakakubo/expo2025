@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap');
+
+/* ===== カラーと基本設定 ===== */
+:root {
+    --primary-color: #00479d; /* 万博公式カラー(青) */
+    --accent-color: #d81b2b;  /* 万博公式カラー(赤) */
+    --text-color: #333333;
+    --background-color: #f8f9fa;
+    --white: #FFFFFF;
+    --gray: #888888;
+}
+
+body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    margin: 0;
+}
+.container {
+    max-width: 680px;
+    margin: 20px auto;
+    padding: 20px 30px 30px;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+.hidden {
+    display: none !important;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ===== ヘッダー ===== */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.site-title {
+    font-size: 0.9em;
+    color: var(--gray);
+    margin: 0;
+}
+header h1 {
+    color: var(--primary-color);
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0;
+}
+.sub-title {
+    font-size: 1em;
+    color: var(--primary-color);
+    margin-top: 5px;
+}
+
+/* ===== 診断画面 ===== */
+#start-container .description {
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.question-number {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+#question-text {
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 700;
+    margin: 5px 0 30px;
+}
+#choices-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ===== ボタン ===== */
+#start-btn, .choice-btn, #retry-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1em;
+    font-family: inherit;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+#start-btn {
+    max-width: 320px;
+    margin: 0 auto;
+    border: none;
+    background: var(--primary-color);
+    color: var(--white);
+    font-weight: 700;
+    border-radius: 50px;
+}
+.choice-btn {
+    border: 2px solid #ddd;
+    background: var(--white);
+    color: var(--text-color);
+}
+#start-btn:hover { opacity: 0.85; }
+.choice-btn:hover { border-color: var(--accent-color); background: #fff2f2; }
+
+/* ===== 結果画面 ===== */
+.result-lead {
+    text-align: center;
+    color: var(--gray);
+}
+#result-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: 5px 0 30px;
+}
+.result-box {
+    background: #f4f8ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+.box-title {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin: 0 0 15px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+}
+.box-title .icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    line-height: 1;
+}
+.score-box { border: 2px solid var(--accent-color); }
+.score-wrapper { display: flex; align-items: center; gap: 20px; }
+.chart-wrapper { width: 60%; position: relative; }
+.percentage-wrapper { width: 40%; text-align: center; }
+.percentage-wrapper p { padding: 0; margin: 0 0 5px; }
+#recommend-percentage-value { font-size: 3em; font-weight: 700; color: var(--accent-color); line-height: 1; }
+
+/* おすすめパビリオンリスト */
+#recommendation-list { display: flex; flex-direction: column; gap: 20px; }
+.rec-pavilion { border: 1px solid #ddd; border-radius: 12px; overflow: hidden; }
+.rec-header { display: flex; align-items: center; gap: 15px; background: var(--primary-color); color: var(--white); padding: 15px; }
+.rec-rank { font-size: 2em; font-weight: 700; }
+.rec-name { font-size: 1.2em; font-weight: 700; }
+.rec-body { padding: 20px; }
+.rec-comment-title { font-weight: 700; margin-bottom: 5px; }
+.rec-comment { margin-bottom: 20px; }
+.rec-button {
+    background: var(--accent-color); color: var(--white); padding: 10px 20px;
+    border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block;
+}
+.rec-button:hover { opacity: 0.85; }
+
+/* シェア・リトライボタン */
+.share-area { margin-top: 30px; padding-top: 30px; border-top: 1px solid #eee; text-align: center; }
+.share-button {
+    max-width: 320px; margin: 0 auto; display: inline-flex; align-items: center;
+    justify-content: center; gap: 10px; font-weight: 700; color: var(--white);
+    background-color: #333; border: none; text-decoration: none; padding: 16px;
+    font-size: 1.1em; border-radius: 50px;
+}
+.share-button:hover { background-color: #111; }
+.share-button .icon { width: 20px; height: 20px; fill: currentColor; }
+#retry-btn { max-width: 320px; margin: 15px auto 0; background: var(--white); color: var(--gray); border: 2px solid #ccc; border-radius: 50px; }
+#retry-btn:hover { background: #f5f5f5; border-color: #bbb; }
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    #choices-area { grid-template-columns: 1fr; }
+    .score-wrapper { flex-direction: column; }
+    .chart-wrapper, .percentage-wrapper { width: 100%; }
+    .chart-wrapper { max-width: 280px; margin-bottom: 20px; }
+}
