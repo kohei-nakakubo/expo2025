@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== データ定義 =====
-    // 質問と選択肢 (10問)
     const quizData = [
         { q: "休日に一番したいことは？", c: [{ t: "最新のガジェットを試しに行く", v: "tech" }, { t: "映画やアニメを一気見する", v: "entame" }, { t: "自然の中でキャンプやハイキング", v: "nature" }, { t: "話題のレストランで食事", v: "life" }] },
         { q: "観るなら、どんなジャンルの映画？", c: [{ t: "最先端のVFXを駆使したSF大作", v: "tech" }, { t: "壮大な世界観のファンタジーやアニメ", v: "entame" }, { t: "社会問題を鋭く描くドキュメンタリー", v: "future" }, { t: "実話に基づく人間ドラマ", v: "life" }] },
@@ -81,13 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayResult() {
-        const { top3, percentage, primaryConcern } = processDiagnosis(userScores);
+        const { top3, primaryConcern } = processDiagnosis(userScores);
         
         const recommendationList = document.getElementById('recommendation-list');
         recommendationList.innerHTML = '';
         top3.forEach((pavilion, index) => {
             const rank = index + 1;
-            // ▼▼▼【重要】AIコメントを診断結果に基づいて動的に生成 ▼▼▼
             const reason = `あなた様の最も高い興味関心である**「${primaryConcern.jp}」**のテーマと、このパビリオンが持つ**「${pavilion.matchedCategory.jp}」**の要素が強く合致しているため、最高の体験をお約束できると判断いたしました。`;
             const pavilionHTML = `
                 <div class="rec-pavilion">
@@ -104,8 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             recommendationList.innerHTML += pavilionHTML.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
         });
-
-        document.getElementById('recommend-percentage-value').textContent = `${percentage}%`;
         
         const shareText = `私の万博おすすめパビリオンBest3は… 1位:${top3[0].name}, 2位:${top3[1].name}, 3位:${top3[2].name} でした！ #万博AIパビリオン診断`;
         const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
@@ -122,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function processDiagnosis(scores) {
         const categoryLabels = { tech: 'テクノロジー', entame: 'エンタメ・文化', future: '未来社会・ビジネス', nature: '自然・環境', life: 'ライフスタイル・食' };
 
-        // 最もスコアが高い興味関心を特定
         let maxScore = -1;
         let primaryConcernKey = 'tech';
         for (const key in scores) {
@@ -133,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const primaryConcern = { key: primaryConcernKey, jp: categoryLabels[primaryConcernKey] };
 
-        // 各パビリオンの適合スコアを計算
         let pavilionScores = [];
         for (const key in pavilions) {
             const pavilion = pavilions[key];
@@ -142,13 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             pavilion.categories.forEach(category => {
                 score += scores[category];
-                // 最も興味のある分野と合致するかを記録
                 if(category === primaryConcern.key) {
-                    score += 5; // 最も興味のある分野にはボーナスポイント
+                    score += 5; 
                     matchedCategory = { key: category, jp: categoryLabels[category] };
                 }
             });
-            // マッチしたカテゴリがない場合は、パビリオンの最初のカテゴリを代表とする
             if(!matchedCategory.key) {
                 const firstCategory = pavilion.categories[0];
                 matchedCategory = { key: firstCategory, jp: categoryLabels[firstCategory] };
@@ -159,11 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pavilionScores.sort((a, b) => b.score - a.score);
         const top3 = pavilionScores.slice(0, 3);
         
-        const totalScore = Object.values(scores).reduce((sum, val) => sum + val, 0);
-        const maxPossibleScore = quizData.length;
-        const percentage = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
-        
-        return { top3, percentage, primaryConcern };
+        return { top3, primaryConcern };
     }
     
     function renderSpiderChart(scores) {
