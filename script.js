@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { q: "「イノベーション」と聞いて、よりワクワクするのは？", c: [{ t: "人々の暮らしを根底から変える新技術", v: "tech" }, { t: "全く新しいビジネスモデルの誕生", v: "future" }, { t: "常識を覆すアートやエンタメ表現", v: "entame" }, { t: "地球環境を守るための画期的なアイデア", v: "nature" }] }
     ];
 
-    // ▼▼▼【重要】公式サイトから抽出した正確なリンクに完全修正 ▼▼▼
+    // ▼▼▼【重要】公式サイトから直接抽出した、正確なリンクのデータベース ▼▼▼
     const pavilions = {
         'gundam': { name: "GUNDAM NEXT FUTURE PAVILION", categories: ['tech', 'entame', 'future'], link: "https://www.expo2025.or.jp/jp/domestic-pv/bandainamco/" },
         'ntt': { name: "NTT Pavilion", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/jp/domestic-pv/ntt/" },
