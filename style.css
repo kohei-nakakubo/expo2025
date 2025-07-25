@@ -147,9 +147,10 @@ header h1 {
 .score-box { border: 2px solid var(--accent-color); }
 .score-wrapper { display: flex; justify-content: center; align-items: center; }
 .chart-wrapper {
-    width: 100%; /* グラフエリアの横幅を100%に */
-    max-width: 400px; /* ただし、大きくなりすぎないように最大幅を指定 */
+    width: 100%;
+    max-width: 400px;
     position: relative;
+    margin: 0 auto;
 }
 
 /* おすすめパビリオンリスト */
