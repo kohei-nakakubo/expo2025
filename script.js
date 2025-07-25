@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { q: "「イノベーション」と聞いて、よりワクワクするのは？", c: [{ t: "人々の暮らしを根底から変える新技術", v: "tech" }, { t: "全く新しいビジネスモデルの誕生", v: "future" }, { t: "常識を覆すアートやエンタメ表現", v: "entame" }, { t: "地球環境を守るための画期的なアイデア", v: "nature" }] }
     ];
 
-    // ▼▼▼【重要】公式サイトから抽出した正確なリンクに完全修正 ▼▼▼
+    // ▼▼▼【重要】公式サイトの個別URLに完全修正 ▼▼▼
     const pavilions = {
         'gundam': { name: "GUNDAM NEXT FUTURE PAVILION", categories: ['tech', 'entame', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/bandainamco/" },
         'ntt': { name: "NTT Pavilion", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/ntt/" },
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'korea': { name: "大韓民国 パビリオン", categories: ['entame', 'tech', 'life'], link: "https://www.expo2025.or.jp/official-participant/korea/" },
         'germany': { name: "ドイツ パビリオン", categories: ['nature', 'tech', 'future'], link: "https://www.expo2025.or.jp/official-participant/germany/" },
         'netherlands': { name: "オランダ パビリオン", categories: ['nature', 'life', 'future'], link: "https://www.expo2025.or.jp/official-participant/netherlands/" },
-        'ishiguro': { name: "シグネチャーパビリオン「いのちの未来」", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/overview/project/#signature" }
+        'ishiguro': { name: "シグネチャーパビリオン「いのちの未来」", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/news/news-20250306-05/" }
     };
     const scoreCategories = ['tech', 'entame', 'future', 'nature', 'life'];
     
@@ -110,13 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ▼▼▼【重要】AIコメントを全面的に刷新 ▼▼▼
     function getReason(pavilion, primaryConcern) {
         let comment = `診断おおきに！あんた様の興味はズバリ**「${primaryConcern.jp}」**ですな！そしたら、ここは絶対外せまへんで！`;
 
         switch(pavilion.key) {
             case 'gundam':
-                comment += " なんでかって？ここは『機動戦士ガンダム』が描く未来の可能性がテーマ。ただのアニメやない、**未来社会**で**テクノロジー**がどない進化して、社会がどない変わるかをリアルに体験できる空間なんですわ。あんた様の**エンタメ好き**な魂と、**未来**への知的好奇心、両方ガッチリ掴んで離しまへんで！";
+                comment += " なんでかって？ここは『機動戦士ガンダム』が描く未来の可能性がテーマ。ただのアニメやない、**未来社会**や**テクノロジー**がどないなっていくかをリアルに体験できる空間なんですわ。あんた様の**エンタメ好き**な魂と、**未来**への知的好奇心、両方ガッチリ掴んで離しまへんで！";
                 break;
             case 'ntt':
                 comment += " なんでかって？ここはNTTが誇る次世代通信技術「IOWN」で、ホンマにリアルな**未来のコミュニケーション**を体験できる場所やから。遠い場所の人間とホンマに目の前におるみたいに繋がる…そんなSFの世界が現実になるんです。あんた様の**テクノロジー**と**未来のビジネス**への関心やったら、ビビッとくること間違いなしですわ！";
@@ -176,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function renderSpiderChart(scores) {
         if (expoChart) { expoChart.destroy(); }
-        const chartCtx = document.getElementById('expo-chart').getContext('2d');
+        const chartCtx = document.getElementById('expo-chart').getContext('d');
         const labels = { tech: 'テクノロジー', entame: 'エンタメ・文化', future: '未来社会・ビジネス', nature: '自然・環境', life: 'ライフスタイル・食' };
         
         const maxScorePerCategory = quizData.reduce((acc, curr) => {
