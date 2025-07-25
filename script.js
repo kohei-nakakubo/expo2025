@@ -15,29 +15,37 @@ document.addEventListener('DOMContentLoaded', () => {
         { q: "「イノベーション」と聞いて、よりワクワクするのは？", c: [{ t: "人々の暮らしを根底から変える新技術", v: "tech" }, { t: "全く新しいビジネスモデルの誕生", v: "future" }, { t: "常識を覆すアートやエンタメ表現", v: "entame" }, { t: "地球環境を守るための画期的なアイデア", v: "nature" }] }
     ];
 
-    // パビリオンデータベース
+    // ▼▼▼【重要】公式サイトの情報を基にパビリオンデータベースを刷新 ▼▼▼
     const pavilions = {
-        'gundam': { name: "GUNDAM NEXT FUTURE PAVILION", categories: ['tech', 'entame'], desc: "「機動戦士ガンダム」が示す未来の可能性がテーマです。少年時代の興奮が蘇ると同時に、現代社会の課題と向き合う、深い知的な体験となるでしょう。" },
-        'ntt': { name: "NTT Pavilion (仮称)", categories: ['tech', 'future'], desc: "NTTが描く未来のコミュニケーションがテーマです。最新技術がビジネスや社会をどう変えるか、その最前線に触れたいあなた様におすすめです。" },
-        'panasonic': { name: "パナソニック паビリオン「ノモの国」", categories: ['tech', 'nature', 'life'], desc: "サステナブルな未来をテーマに、モノや情報から解放された新しい生き方を提示します。日々の暮らしや環境問題に関心が高いあなた様にぴったりです。" },
-        'mitsubishi': { name: "三菱 未来館", categories: ['future', 'tech', 'nature'], desc: "「いのち」と宇宙、そして地球の未来を巡る壮大なテーマです。ビジネスのヒントや、大きな視座を得たいあなた様の知的好奇心を刺激します。" },
-        'sumitomo': { name: "住友館", categories: ['nature', 'life', 'future'], desc: "「森の劇場」と「森のラーニング」をテーマに、未来の幸福を考えます。自然との共生や、心豊かなライフスタイルを求めるあなた様に響くでしょう。" },
-        'gas': { name: "大阪ガスグループパビリオン「笑顔の未来」", categories: ['life', 'nature', 'future'], desc: "食やエネルギーの未来を通じて、地球の健康を考えるパビリオンです。実生活に直結したテーマで、新しい発見や学びを求めるあなた様に最適です。" },
-        'yoshimoto': { name: "よしもと waraii myraii館", categories: ['entame', 'life'], desc: "よしもと興業が「笑い」と「テクノロジー」を融合させます。日々の疲れを忘れ、純粋に楽しみたい、新しいエンタメを体験したいあなた様におすすめです。" },
-        'ishiguro': { name: "シグネチャーパビリオン「いのちの未来」", categories: ['tech', 'future'], desc: "アンドロイド研究の第一人者、石黒浩氏がプロデュース。ロボットやAIが共存する未来の社会像を提示します。テクノロジーの進化の先を見たいあなた様に。" }
+        // --- 国内パビリオン ---
+        'gundam': { name: "GUNDAM NEXT FUTURE PAVILION", categories: ['tech', 'entame', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/bandainamco/" },
+        'ntt': { name: "NTT Pavilion (仮称)", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/ntt/" },
+        'panasonic': { name: "パナソニックパビリオン「ノモの国」", categories: ['tech', 'nature', 'life'], link: "https://www.expo2025.or.jp/domestic-pv/panasonic/" },
+        'mitsubishi': { name: "三菱 未来館", categories: ['future', 'tech', 'nature'], link: "https://www.expo2025.or.jp/domestic-pv/mitsubishi/" },
+        'sumitomo': { name: "住友館", categories: ['nature', 'life', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/sumitomo/" },
+        'gas': { name: "大阪ガスグループパビリオン「笑顔の未来」", categories: ['life', 'nature', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/osakagas/" },
+        'yoshimoto': { name: "よしもと waraii myraii館", categories: ['entame', 'life'], link: "https://www.expo2025.or.jp/domestic-pv/yoshimoto/" },
+        
+        // --- 海外パビリオン (代表例) ---
+        'usa': { name: "アメリカ合衆国 パビリオン", categories: ['tech', 'future', 'life'], link: "https://www.expo2025.or.jp/official-participant/usa/" },
+        'switzerland': { name: "スイス パビリオン", categories: ['nature', 'tech', 'life'], link: "https://www.expo2025.or.jp/official-participant/switzerland/" },
+        'saudi_arabia': { name: "サウジアラビア パビリオン", categories: ['future', 'life', 'entame'], link: "https://www.expo2025.or.jp/official-participant/saudiarabia/" },
+        'korea': { name: "大韓民国 パビリオン", categories: ['entame', 'tech', 'life'], link: "https://www.expo2025.or.jp/official-participant/korea/" },
+        'germany': { name: "ドイツ パビリオン", categories: ['nature', 'tech', 'future'], link: "https://www.expo2025.or.jp/official-participant/germany/" },
+        'netherlands': { name: "オランダ パビリオン", categories: ['nature', 'life', 'future'], link: "https://www.expo2025.or.jp/official-participant/netherlands/" },
+        
+        // --- シグネチャーパビリオン ---
+        'ishiguro': { name: "シグネチャーパビリオン「いのちの未来」", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/overview/project/#signature" }
     };
     const scoreCategories = ['tech', 'entame', 'future', 'nature', 'life'];
     
-    // ===== グローバル変数 =====
     let currentQuestionIndex, userScores, expoChart;
 
-    // ===== アプリケーションの初期化 =====
     function initialize() {
         document.getElementById('start-btn').addEventListener('click', startQuiz);
         document.getElementById('retry-btn').addEventListener('click', startQuiz);
     }
 
-    // ===== 診断のフロー制御 =====
     function startQuiz() {
         currentQuestionIndex = 0;
         userScores = { tech: 0, entame: 0, future: 0, nature: 0, life: 0 };
@@ -51,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const q = quizData[currentQuestionIndex];
         document.getElementById('question-number').textContent = `Question ${currentQuestionIndex + 1}/${quizData.length}`;
         document.getElementById('question-text').textContent = q.q;
-        
         const choicesArea = document.getElementById('choices-area');
         choicesArea.innerHTML = ''; 
         q.c.forEach(choice => {
@@ -64,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function selectAnswer(value) {
-        userScores[value] += 1;
+        userScores[value]++;
         currentQuestionIndex++;
         if (currentQuestionIndex < quizData.length) {
             displayQuestion();
@@ -73,15 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ===== 結果処理 =====
     function displayResult() {
-        const { top3, percentage } = processDiagnosis(userScores);
+        const { top3, percentage, primaryConcern } = processDiagnosis(userScores);
         
-        // おすすめパビリオンリストを生成
         const recommendationList = document.getElementById('recommendation-list');
         recommendationList.innerHTML = '';
         top3.forEach((pavilion, index) => {
             const rank = index + 1;
+            // ▼▼▼【重要】AIコメントを診断結果に基づいて動的に生成 ▼▼▼
+            const reason = `あなた様の最も高い興味関心である**「${primaryConcern.jp}」**のテーマと、このパビリオンが持つ**「${pavilion.matchedCategory.jp}」**の要素が強く合致しているため、最高の体験をお約束できると判断いたしました。`;
             const pavilionHTML = `
                 <div class="rec-pavilion">
                     <div class="rec-header">
@@ -90,16 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="rec-body">
                         <p class="rec-comment-title">AIアテンダー's コメント</p>
-                        <p class="rec-comment">${pavilion.desc}</p>
-                        <a href="https://www.expo2025.or.jp/" target="_blank" class="rec-button">公式サイトで詳細を見る</a>
+                        <p class="rec-comment">${reason}</p>
+                        <a href="${pavilion.link}" target="_blank" class="rec-button">公式サイトで詳細を見る</a>
                     </div>
                 </div>
             `;
-            recommendationList.innerHTML += pavilionHTML;
+            recommendationList.innerHTML += pavilionHTML.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
         });
 
         document.getElementById('recommend-percentage-value').textContent = `${percentage}%`;
         
+        const shareText = `私の万博おすすめパビリオンBest3は… 1位:${top3[0].name}, 2位:${top3[1].name}, 3位:${top3[2].name} でした！ #万博AIパビリオン診断`;
+        const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+        document.getElementById('share-button').href = shareUrl;
+
         document.getElementById('quiz-container').classList.add('hidden');
         document.getElementById('result-container').classList.remove('hidden');
         
@@ -108,32 +119,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== AI診断エンジン =====
     function processDiagnosis(scores) {
-        let pavilionScores = [];
+        const categoryLabels = { tech: 'テクノロジー', entame: 'エンタメ・文化', future: '未来社会・ビジネス', nature: '自然・環境', life: 'ライフスタイル・食' };
+
+        // 最もスコアが高い興味関心を特定
+        let maxScore = -1;
+        let primaryConcernKey = 'tech';
+        for (const key in scores) {
+            if (scores[key] > maxScore) {
+                maxScore = scores[key];
+                primaryConcernKey = key;
+            }
+        }
+        const primaryConcern = { key: primaryConcernKey, jp: categoryLabels[primaryConcernKey] };
+
         // 各パビリオンの適合スコアを計算
+        let pavilionScores = [];
         for (const key in pavilions) {
             const pavilion = pavilions[key];
             let score = 0;
+            let matchedCategory = { key: '', jp: '' };
+
             pavilion.categories.forEach(category => {
                 score += scores[category];
+                // 最も興味のある分野と合致するかを記録
+                if(category === primaryConcern.key) {
+                    score += 5; // 最も興味のある分野にはボーナスポイント
+                    matchedCategory = { key: category, jp: categoryLabels[category] };
+                }
             });
-            pavilionScores.push({ ...pavilion, key, score });
+            // マッチしたカテゴリがない場合は、パビリオンの最初のカテゴリを代表とする
+            if(!matchedCategory.key) {
+                const firstCategory = pavilion.categories[0];
+                matchedCategory = { key: firstCategory, jp: categoryLabels[firstCategory] };
+            }
+            pavilionScores.push({ ...pavilion, key, score, matchedCategory });
         }
 
-        // スコア順にソートして上位3つを取得
         pavilionScores.sort((a, b) => b.score - a.score);
         const top3 = pavilionScores.slice(0, 3);
         
-        // 総合おすすめ度を計算
         const totalScore = Object.values(scores).reduce((sum, val) => sum + val, 0);
-        const maxPossibleScore = quizData.length; // 10問 x 1点
+        const maxPossibleScore = quizData.length;
         const percentage = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
         
-        return { top3, percentage };
+        return { top3, percentage, primaryConcern };
     }
     
-    // ===== グラフ描画 =====
     function renderSpiderChart(scores) {
         if (expoChart) {
             expoChart.destroy(); 
@@ -141,25 +173,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const chartCtx = document.getElementById('expo-chart').getContext('2d');
         const labels = { tech: 'テクノロジー', entame: 'エンタメ・文化', future: '未来社会・ビジネス', nature: '自然・環境', life: 'ライフスタイル・食' };
         
-        // スコアを最大値(10問中何問か)で正規化して%に変換
         const maxScorePerCategory = quizData.reduce((acc, curr) => {
-            curr.c.forEach(choice => {
-                acc[choice.v] = (acc[choice.v] || 0) + 1;
-            });
+            curr.c.forEach(choice => { acc[choice.v] = (acc[choice.v] || 0) + 1; });
             return acc;
         }, {});
-
-        const dataValues = scoreCategories.map(key => {
-            const max = maxScorePerCategory[key] || 1;
-            return (scores[key] / max) * 100;
-        });
+        const dataValues = scoreCategories.map(key => (scores[key] / (maxScorePerCategory[key] || 1)) * 100);
 
         const data = {
             labels: scoreCategories.map(key => labels[key]),
             datasets: [{
-                label: '興味関心',
-                data: dataValues,
-                fill: true,
+                label: '興味関心', data: dataValues, fill: true,
                 backgroundColor: 'rgba(216, 27, 43, 0.2)',
                 borderColor: 'rgb(216, 27, 43)',
                 pointBackgroundColor: 'rgb(216, 27, 43)',
@@ -181,6 +204,5 @@ document.addEventListener('DOMContentLoaded', () => {
         expoChart = new Chart(chartCtx, config);
     }
 
-    // ===== アプリケーション実行開始 =====
     initialize();
 });
