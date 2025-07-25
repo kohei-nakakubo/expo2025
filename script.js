@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'usa': { name: "アメリカ合衆国 パビリオン", categories: ['tech', 'future', 'life'], link: "https://www.expo2025.or.jp/official-participant/united-states-of-america/" },
         'uae': { name: "アラブ首長国連邦 パビリオン", categories: ['future', 'tech', 'life'], link: "https://www.expo2025.or.jp/official-participant/uae/" },
         'algeria': { name: "アルジェリア パビリオン", categories: ['nature', 'life', 'entame'], link: "https://www.expo2025.or.jp/official-participant/algeria/" },
-        'uk': { name: "イギリス パビリオン", categories: ['tech', 'future', 'entame'], link: "https://www.expo2025.or.jp/official-participant/united-kingdom/" },
+        'uk': { name: "イギリス パビリオン", categories: ['tech', 'future', 'entame'], link: "https://www.expo2025.or.jp/official-participant/united-great-britain-and-norrn-ireland/ },
         'italy': { name: "イタリア パビリオン", categories: ['life', 'entame', 'tech'], link: "https://www.expo2025.or.jp/official-participant/italy/" },
         'india': { name: "インド パビリオン", categories: ['tech', 'future', 'life'], link: "https://www.expo2025.or.jp/official-participant/india/" },
         'indonesia': { name: "インドネシア パビリオン", categories: ['nature', 'life', 'entame'], link: "https://www.expo2025.or.jp/official-participant/indonesia/" },
