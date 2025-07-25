@@ -16,20 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ▼▼▼【重要】公式サイトから抽出した正確なリンクに完全修正 ▼▼▼
     const pavilions = {
-        'gundam': { name: "GUNDAM NEXT FUTURE PAVILION", categories: ['tech', 'entame', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/bandainamco/" },
-        'ntt': { name: "NTT Pavilion", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/ntt/" },
-        'panasonic': { name: "パナソニックパビリオン「ノモの国」", categories: ['tech', 'nature', 'life'], link: "https://www.expo2025.or.jp/domestic-pv/panasonic/" },
-        'mitsubishi': { name: "三菱 未来館", categories: ['future', 'tech', 'nature'], link: "https://www.expo2025.or.jp/domestic-pv/mitsubishi/" },
-        'sumitomo': { name: "住友館", categories: ['nature', 'life', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/sumitomo/" },
-        'gas': { name: "大阪ガスグループパビリオン", categories: ['life', 'nature', 'future'], link: "https://www.expo2025.or.jp/domestic-pv/osakagas/" },
-        'yoshimoto': { name: "よしもと waraii myraii館", categories: ['entame', 'life'], link: "https://www.expo2025.or.jp/domestic-pv/yoshimoto/" },
-        'usa': { name: "アメリカ合衆国 パビリオン", categories: ['tech', 'future', 'life'], link: "https://www.expo2025.or.jp/official-participant/usa/" },
-        'switzerland': { name: "スイス パビリオン", categories: ['nature', 'tech', 'life'], link: "https://www.expo2025.or.jp/official-participant/switzerland/" },
-        'saudi_arabia': { name: "サウジアラビア パビリオン", categories: ['future', 'life', 'entame'], link: "https://www.expo2025.or.jp/official-participant/saudiarabia/" },
-        'korea': { name: "大韓民国 パビリオン", categories: ['entame', 'tech', 'life'], link: "https://www.expo2025.or.jp/official-participant/korea/" },
-        'germany': { name: "ドイツ パビリオン", categories: ['nature', 'tech', 'future'], link: "https://www.expo2025.or.jp/official-participant/germany/" },
-        'netherlands': { name: "オランダ パビリオン", categories: ['nature', 'life', 'future'], link: "https://www.expo2025.or.jp/official-participant/netherlands/" },
-        'ishiguro': { name: "シグネチャーパビリオン「いのちの未来」", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/news/news-20250306-05/" }
+        'gundam': { name: "GUNDAM NEXT FUTURE PAVILION", categories: ['tech', 'entame', 'future'], link: "https://www.expo2025.or.jp/jp/domestic-pv/bandainamco/" },
+        'ntt': { name: "NTT Pavilion", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/jp/domestic-pv/ntt/" },
+        'panasonic': { name: "パナソニックパビリオン「ノモの国」", categories: ['tech', 'nature', 'life'], link: "https://www.expo2025.or.jp/jp/domestic-pv/panasonic/" },
+        'mitsubishi': { name: "三菱 未来館", categories: ['future', 'tech', 'nature'], link: "https://www.expo2025.or.jp/jp/domestic-pv/mitsubishi/" },
+        'sumitomo': { name: "住友館", categories: ['nature', 'life', 'future'], link: "https://www.expo2025.or.jp/jp/domestic-pv/sumitomo/" },
+        'gas': { name: "大阪ガスグループパビリオン", categories: ['life', 'nature', 'future'], link: "https://www.expo2025.or.jp/jp/domestic-pv/osakagas/" },
+        'yoshimoto': { name: "よしもと waraii myraii館", categories: ['entame', 'life'], link: "https://www.expo2025.or.jp/jp/domestic-pv/yoshimoto/" },
+        'usa': { name: "アメリカ合衆国 パビリオン", categories: ['tech', 'future', 'life'], link: "https://www.expo2025.or.jp/jp/official-participant/usa/" },
+        'switzerland': { name: "スイス パビリオン", categories: ['nature', 'tech', 'life'], link: "https://www.expo2025.or.jp/jp/official-participant/switzerland/" },
+        'saudi_arabia': { name: "サウジアラビア パビリオン", categories: ['future', 'life', 'entame'], link: "https://www.expo2025.or.jp/jp/official-participant/saudiarabia/" },
+        'korea': { name: "大韓民国 パビリオン", categories: ['entame', 'tech', 'life'], link: "https://www.expo2025.or.jp/jp/official-participant/korea/" },
+        'germany': { name: "ドイツ パビリオン", categories: ['nature', 'tech', 'future'], link: "https://www.expo2025.or.jp/jp/official-participant/germany/" },
+        'netherlands': { name: "オランダ パビリオン", categories: ['nature', 'life', 'future'], link: "https://www.expo2025.or.jp/jp/official-participant/netherlands/" },
+        'ishiguro': { name: "シグネチャーパビリオン「いのちの未来」", categories: ['tech', 'future'], link: "https://www.expo2025.or.jp/jp/news/news-20250306-05/" }
     };
     const scoreCategories = ['tech', 'entame', 'future', 'nature', 'life'];
     
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 comment += " なんでかって？スイスいうたらアルプスの大自然！…だけやあらしまへん。ここでは、最先端の**テクノロジー**が雄大な**自然**とどない共存してるかを見せてくれるんです。美しいだけやない、これからの地球のあり方を示してくれる深い体験ができます。あんた様の興味にピッタリやと思いますわ。";
                 break;
             case 'germany':
-                comment += " なんでかって？ここのテーマは「循環経済」。これからのビジネス、いや社会全体を考える上で絶対に外されへん視点です。**環境問題**や**持続可能な未来**に関心が高いあんた様にとって、一番知的で「なるほど！」と唸る発見と刺激に満ちた場所になること、わてが保証します。";
+                comment += " なんでかって？ここのテーマは「循環経済」。これからのビジネス、いや社会全体を考える上で絶対に外されへん視点です。**環境問題**や**持続可能な未来**に関心が高いあんた様にとって、一番知的で「なるほど！」と唸る発見と刺激に満たた場所になること、わてが保証します。";
                 break;
             case 'yoshimoto':
                 comment += " なんでかって？難しい話もええけど、なんやかんや言うて、オモロイのが一番ですやん！ここは吉本が**エンタメ**の力で「笑い」と「健康」を結びつける、前代未聞のパビリオン。日々の疲れを忘れて、腹の底から笑いたいあんた様に、最高の時間を提供してくれますで！";
